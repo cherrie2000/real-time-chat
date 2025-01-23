@@ -1,38 +1,29 @@
-import React, { useState } from 'react';
-
-const GenderCheckbox = () => {
-  const [selectedGender, setSelectedGender] = useState(null);
-
-  const handleCheckboxChange = (gender) => {
-    setSelectedGender(gender === selectedGender ? null : gender);
-  };
-
-  return (
-    <div className="flex space-x-4">
-      <div className="form-control">
-        <label className="label cursor-pointer">
-          <span className="label-text text-white hover:text-blue-600">Male</span>
-          <input
-            type="checkbox"
-            className="checkbox checkbox-primary"
-            checked={selectedGender === 'Male'}
-            onChange={() => handleCheckboxChange('Male')}
-          />
-        </label>
-      </div>
-      <div className="form-control">
-        <label className="label cursor-pointer">
-          <span className="label-text text-white hover:text-blue-600">Female</span>
-          <input
-            type="checkbox"
-            className="checkbox checkbox-primary"
-            checked={selectedGender === 'Female'}
-            onChange={() => handleCheckboxChange('Female')}
-          />
-        </label>
-      </div>
-    </div>
-  );
+const GenderCheckbox = ({ onCheckboxChange, selectedGender }) => {
+	return (
+		<div className='flex'>
+			<div className='form-control'>
+				<label className={`label gap-2 cursor-pointer ${selectedGender === "male" ? "selected" : ""} `}>
+					<span className='label-text'>Male</span>
+					<input
+						type='checkbox'
+						className='checkbox border-slate-900'
+						checked={selectedGender === "male"}
+						onChange={() => onCheckboxChange("male")}
+					/>
+				</label>
+			</div>
+			<div className='form-control'>
+				<label className={`label gap-2 cursor-pointer  ${selectedGender === "female" ? "selected" : ""}`}>
+					<span className='label-text'>Female</span>
+					<input
+						type='checkbox'
+						className='checkbox border-slate-900'
+						checked={selectedGender === "female"}
+						onChange={() => onCheckboxChange("female")}
+					/>
+				</label>
+			</div>
+		</div>
+	);
 };
-
 export default GenderCheckbox;
